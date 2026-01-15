@@ -1,0 +1,30 @@
+name: hanzo-embeddings
+services:
+- name: embeddings
+  source_dir: embeddings
+  github:
+    branch: main
+    repo: hanzoai/hanzo
+    deploy_on_push: true
+  run_command: npm start
+  environment_slug: node-js
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  http_port: 3002
+  routes:
+  - path: /
+  envs:
+  - key: PORT
+    value: "3002"
+  - key: HOST
+    value: "0.0.0.0"
+  - key: OPENAI_API_KEY
+    scope: RUN_TIME
+    type: SECRET
+  - key: VOYAGE_API_KEY
+    scope: RUN_TIME
+    type: SECRET
+  - key: DEFAULT_EMBEDDING_MODEL
+    value: "text-embedding-3-small"
+  health_check:
+    http_path: /health
