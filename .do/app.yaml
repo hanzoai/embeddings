@@ -3,8 +3,8 @@ services:
 - name: embeddings
   source_dir: embeddings
   github:
-    branch: main
-    repo: hanzoai/hanzo
+    branch: app-platform
+    repo: hanzoai/embeddings
     deploy_on_push: true
   run_command: npm start
   environment_slug: node-js
