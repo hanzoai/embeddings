@@ -1,8 +1,29 @@
-name: sample-dockerfile
+name: hanzo-embeddings
 services:
-- dockerfile_path: Dockerfile
+- name: embeddings
   github:
     branch: main
+    repo: hanzoai/embeddings
     deploy_on_push: true
-    repo: digitalocean/sample-dockerfile
-  name: sample-dockerfile
+  run_command: node server.js
+  environment_slug: node-js
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  http_port: 3001
+  routes:
+  - path: /
+  envs:
+  - key: PORT
+    value: "3001"
+  - key: HOST
+    value: "0.0.0.0"
+  - key: VOYAGE_API_KEY
+    scope: RUN_TIME
+    type: SECRET
+  - key: OPENAI_API_KEY
+    scope: RUN_TIME
+    type: SECRET
+  - key: DEFAULT_EMBEDDING_MODEL
+    value: "text-embedding-3-small"
+  health_check:
+    http_path: /health
