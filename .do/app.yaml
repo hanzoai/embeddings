@@ -1,7 +1,6 @@
 name: hanzo-embeddings
 services:
 - name: embeddings
-  source_dir: embeddings
   github:
     branch: app-platform
     repo: hanzoai/embeddings
@@ -10,12 +9,12 @@ services:
   environment_slug: node-js
   instance_count: 1
   instance_size_slug: basic-xxs
-  http_port: 3002
+  http_port: 3001
   routes:
   - path: /
   envs:
   - key: PORT
-    value: "3002"
+    value: "3001"
   - key: HOST
     value: "0.0.0.0"
   - key: OPENAI_API_KEY

@@ -2,10 +2,7 @@ name: Deploy Embeddings to DigitalOcean App Platform
 
 on:
   push:
-    branches: [ main ]
-    paths:
-      - 'embeddings/**'
-      - '.github/workflows/deploy-embeddings.yml'
+    branches: [ app-platform, main ]
   workflow_dispatch:
 
 jobs:
@@ -22,7 +19,6 @@ jobs:
 
     - name: Deploy to DigitalOcean App Platform
       run: |
-        cd embeddings
         doctl apps create --spec .do/app.yaml --wait || \
         doctl apps update hanzo-embeddings --spec .do/app.yaml --wait
       env:
