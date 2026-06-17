@@ -1,4 +1,4 @@
-# LLM.md - Hanzo Embeddings
+# Hanzo Embeddings
 
 ## Overview
 Hanzo Embeddings API Server
