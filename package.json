@@ -1,6 +1,7 @@
 {
   "name": "hanzo-embeddings",
   "version": "1.0.0",
+  "private": true,
   "description": "Hanzo Embeddings API Server",
   "main": "server.js",
   "scripts": {
