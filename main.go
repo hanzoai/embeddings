@@ -36,7 +36,7 @@ func main() {
 		port = "80"
 	}
 
-	for _, line := range strings.Split(startupMessage, "\n") {
+	for line := range strings.SplitSeq(startupMessage, "\n") {
 		fmt.Println(line)
 	}
 	fmt.Printf("Server listening at :%s 🚀\n", port)
